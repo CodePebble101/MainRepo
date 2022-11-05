@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.notes_01.fragments.list.ListFragment"
+        android:label="Все заметки"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_ADDFragment"
+            app:destination="@id/ADDFragment"
+            app:enterAnim="@anim/from_down"
+            app:exitAnim="@anim/to_up"
+            app:popEnterAnim="@anim/from_up"
+            app:popExitAnim="@anim/to_down" />
+        <action
+            android:id="@+id/action_listFragment_to_updateFragment"
+            app:destination="@id/updateFragment"
+            app:enterAnim="@anim/from_down"
+            app:exitAnim="@anim/to_up"
+            app:popEnterAnim="@anim/from_up"
+            app:popExitAnim="@anim/to_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/ADDFragment"
+        android:name="com.example.notes_01.fragments.add.ADDFragment"
+        android:label="Новая заметка"
+        tools:layout="@layout/fragment_a_d_d" >
+        <action
+            android:id="@+id/action_ADDFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:enterAnim="@anim/from_up"
+            app:exitAnim="@anim/to_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.notes_01.fragments.update.UpdateFragment"
+        android:label="Редактор"
+        tools:layout="@layout/fragment_update" >
+        <argument
+            android:name="currentUser"
+            app:argType="com.example.notes_01.model.User" />
+        <action
+            android:id="@+id/action_updateFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:enterAnim="@anim/from_up"
+            app:exitAnim="@anim/to_down" />
+
+    </fragment>
+</navigation>
